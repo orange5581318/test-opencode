@@ -47,11 +47,14 @@ const rules: FormRules = {
 }
 
 async function handleLogin() {
-  await formRef.value?.validate()
+  const valid = await formRef.value?.validate().catch(() => false)
+  if (!valid) return
   loading.value = true
   try {
     await userStore.loginAction(form)
     router.push('/')
+  } catch {
+    // ElMessage shown by interceptor
   } finally {
     loading.value = false
   }

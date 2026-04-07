@@ -8,6 +8,7 @@ const router = createRouter({
 })
 
 let dynamicRoutesLoaded = false
+let addedRouteNames: string[] = []
 
 router.beforeEach(async (to, _from, next) => {
   const token = getToken()
@@ -30,6 +31,7 @@ router.beforeEach(async (to, _from, next) => {
 
     routes.forEach((route) => {
       router.addRoute('Layout', route)
+      if (route.name) addedRouteNames.push(route.name as string)
     })
 
     dynamicRoutesLoaded = true
@@ -40,6 +42,8 @@ router.beforeEach(async (to, _from, next) => {
 })
 
 export function resetDynamicRoutes() {
+  addedRouteNames.forEach((name) => router.removeRoute(name))
+  addedRouteNames = []
   dynamicRoutesLoaded = false
 }
 

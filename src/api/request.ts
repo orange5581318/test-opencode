@@ -25,7 +25,9 @@ request.interceptors.response.use(
   (error) => {
     if (error.response?.status === 401) {
       removeToken()
-      window.location.href = '/login'
+      import('@/router').then(({ default: router }) => {
+        router.push('/login')
+      })
     }
     ElMessage.error(error.message || '网络错误')
     return Promise.reject(error)

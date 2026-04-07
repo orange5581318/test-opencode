@@ -8,7 +8,12 @@ const viewModules = import.meta.glob('../views/**/*.vue')
 
 function resolveComponent(component: string) {
   const key = `../views/${component}.vue`
-  return viewModules[key]
+  const mod = viewModules[key]
+  if (!mod) {
+    console.warn(`[permission] No view found for component: "${component}"`)
+    return () => import('../views/dashboard/index.vue')
+  }
+  return mod
 }
 
 export const usePermissionStore = defineStore('permission', () => {
