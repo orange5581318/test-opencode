@@ -14,8 +14,4 @@ export const staticRoutes: RouteRecordRaw[] = [
     redirect: '/dashboard',
     children: [],
   },
-  {
-    path: '/:pathMatch(.*)*',
-    redirect: '/dashboard',
-  },
 ]

@@ -10,15 +10,15 @@ const router = createRouter({
 let dynamicRoutesLoaded = false
 let addedRouteNames: string[] = []
 
-router.beforeEach(async (to, _from, next) => {
+router.beforeEach(async (to) => {
   const token = getToken()
 
   if (!token) {
-    if (to.path === '/login') return next()
-    return next('/login')
+    if (to.path === '/login') return true
+    return '/login'
   }
 
-  if (to.path === '/login') return next('/')
+  if (to.path === '/login') return '/'
 
   if (!dynamicRoutesLoaded) {
     const { usePermissionStore } = await import('@/stores/permission')
@@ -35,10 +35,15 @@ router.beforeEach(async (to, _from, next) => {
     })
 
     dynamicRoutesLoaded = true
-    return next({ ...to, replace: true })
+    // re-navigate so the newly added routes are matched
+    // if the target route still doesn't exist, fall back to /dashboard
+    const exists = router.resolve(to).matched.length > 0
+    return exists
+      ? { path: to.path, query: to.query, hash: to.hash, replace: true }
+      : '/dashboard'
   }
 
-  next()
+  return true
 })
 
 export function resetDynamicRoutes() {
