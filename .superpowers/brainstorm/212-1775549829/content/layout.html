@@ -1,0 +1,77 @@
+<h2>整体布局风格</h2>
+<p class="subtitle">后台管理系统的主布局，你倾向哪种？</p>
+
+<div class="cards">
+  <div class="card" data-choice="classic" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div class="mockup" style="font-size:11px;">
+        <div class="mock-nav" style="height:40px;line-height:40px;">Logo &nbsp;&nbsp; 系统名称</div>
+        <div style="display:flex;height:160px;">
+          <div class="mock-sidebar" style="width:80px;font-size:10px;padding:8px 4px;">
+            <div style="margin-bottom:6px;">首页</div>
+            <div style="margin-bottom:6px;">商品</div>
+            <div style="margin-bottom:6px;">订单</div>
+            <div>用户</div>
+          </div>
+          <div class="mock-content" style="flex:1;padding:8px;">
+            <div class="placeholder" style="height:30px;margin-bottom:6px;"></div>
+            <div class="placeholder" style="height:80px;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>经典侧边栏</h3>
+      <p>顶部 Header + 左侧固定菜单，主流后台标准布局</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="topnav" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div class="mockup" style="font-size:11px;">
+        <div class="mock-nav" style="height:40px;line-height:40px;">Logo &nbsp; 首页 &nbsp; 商品 &nbsp; 订单 &nbsp; 用户</div>
+        <div style="display:flex;height:160px;">
+          <div class="mock-sidebar" style="width:80px;font-size:10px;padding:8px 4px;">
+            <div style="margin-bottom:6px;">商品列表</div>
+            <div style="margin-bottom:6px;">分类管理</div>
+            <div>规格管理</div>
+          </div>
+          <div class="mock-content" style="flex:1;padding:8px;">
+            <div class="placeholder" style="height:30px;margin-bottom:6px;"></div>
+            <div class="placeholder" style="height:80px;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>顶部导航 + 二级侧边栏</h3>
+      <p>顶部一级菜单，点击后左侧展示二级菜单</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="sidebar-collapse" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div class="mockup" style="font-size:11px;">
+        <div style="display:flex;height:200px;">
+          <div class="mock-sidebar" style="width:36px;font-size:18px;padding:8px 4px;text-align:center;">
+            <div style="margin-bottom:10px;">⊞</div>
+            <div style="margin-bottom:10px;">📦</div>
+            <div style="margin-bottom:10px;">📋</div>
+            <div>👤</div>
+          </div>
+          <div style="flex:1;">
+            <div class="mock-nav" style="height:40px;line-height:40px;padding:0 8px;">面包屑导航 &nbsp;&nbsp; 用户头像</div>
+            <div class="mock-content" style="padding:8px;">
+              <div class="placeholder" style="height:30px;margin-bottom:6px;"></div>
+              <div class="placeholder" style="height:80px;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>可折叠侧边栏</h3>
+      <p>侧边栏可收起为图标模式，内容区更宽敞</p>
+    </div>
+  </div>
+</div>

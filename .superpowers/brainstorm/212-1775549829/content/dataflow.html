@@ -1,0 +1,32 @@
+<h2>数据流 & 核心机制</h2>
+<p class="subtitle">登录鉴权、权限控制、Mock 数据的工作方式</p>
+
+<div class="section">
+  <h3>登录鉴权流程</h3>
+  <ul>
+    <li>登录 → 获取 token → 存入 localStorage + Pinia userStore</li>
+    <li>Axios 请求拦截器自动带上 Authorization header</li>
+    <li>响应拦截器统一处理 401（token 过期跳登录页）</li>
+    <li>路由守卫 beforeEach：无 token 跳 /login，有 token 放行</li>
+  </ul>
+</div>
+
+<div class="section">
+  <h3>动态路由 + 权限</h3>
+  <ul>
+    <li>登录成功后请求用户权限菜单接口</li>
+    <li>根据返回的菜单列表动态 addRoute() 注册路由</li>
+    <li>侧边栏菜单由 Pinia permissionStore 驱动渲染</li>
+    <li>v-permission 指令：检查按钮权限码，无权限则 v-if 隐藏</li>
+  </ul>
+</div>
+
+<div class="section">
+  <h3>Mock 数据方案</h3>
+  <ul>
+    <li>使用 vite-plugin-mock，开发环境自动拦截 /api/* 请求</li>
+    <li>每个模块对应一个 mock 文件（product.ts / order.ts 等）</li>
+    <li>mockjs 生成随机数据，支持分页、搜索参数模拟</li>
+    <li>生产构建时 mock 自动关闭，无需改代码</li>
+  </ul>
+</div>
