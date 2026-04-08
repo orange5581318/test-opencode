@@ -24,6 +24,7 @@ export interface MenuItem {
   path: string
   icon: string
   component: string
+  hidden?: boolean
 }
 
 export function login(data: LoginParams): Promise<LoginResult> {

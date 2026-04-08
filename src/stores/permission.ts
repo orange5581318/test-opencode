@@ -28,7 +28,7 @@ export const usePermissionStore = defineStore('permission', () => {
       path: menu.path,
       name: menu.component.replace('/', '-'),
       component: resolveComponent(menu.component),
-      meta: { title: menu.name, icon: menu.icon },
+      meta: { title: menu.name, icon: menu.icon, hidden: menu.hidden || false },
     }))
 
     dynamicRoutes.value = routes

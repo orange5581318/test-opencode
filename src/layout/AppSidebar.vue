@@ -13,7 +13,7 @@
       active-text-color="#ffffff"
     >
       <el-menu-item
-        v-for="menu in permissionStore.menus"
+        v-for="menu in permissionStore.menus.filter(m => !m.hidden)"
         :key="menu.id"
         :index="menu.path"
       >

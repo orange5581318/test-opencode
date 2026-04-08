@@ -30,6 +30,7 @@ export default [
         { id: 2, name: '商品管理', path: '/product', icon: 'Goods', component: 'product/list' },
         { id: 3, name: '商品分类', path: '/product/category', icon: 'Menu', component: 'product/category' },
         { id: 4, name: '订单管理', path: '/order', icon: 'List', component: 'order/list' },
+        { id: 8, name: '订单详情', path: '/order/detail', icon: 'Document', component: 'order/detail', hidden: true },
         { id: 5, name: '用户管理', path: '/user', icon: 'User', component: 'user/list' },
         { id: 6, name: '角色管理', path: '/user/role', icon: 'UserFilled', component: 'user/role' },
         { id: 7, name: '菜单管理', path: '/user/menu', icon: 'Grid', component: 'user/menu' },
