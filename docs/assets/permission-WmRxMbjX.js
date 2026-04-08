@@ -1,0 +1,1 @@
+import{t as e}from"./permission-D8UUcBQP.js";export{e as usePermissionStore};
