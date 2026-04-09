@@ -1,0 +1,1 @@
+import{t as e}from"./permission-CsdbLdP4.js";export{e as usePermissionStore};
