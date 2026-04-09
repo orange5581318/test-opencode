@@ -12,7 +12,7 @@
 .app-main {
   flex: 1;
   overflow-y: auto;
-  padding: 16px;
-  background: #f0f2f5;
+  padding: 20px;
+  background: var(--ml-bg-main);
 }
 </style>

@@ -1,13 +1,13 @@
 <template>
   <div class="dashboard">
     <div class="stats-row">
-      <StatsCard icon="Money" icon-bg="#409eff" label="总销售额"
+      <StatsCard icon="Money" icon-bg="linear-gradient(135deg, #f0a030, #d89020)" label="总销售额"
         :value="stats?.totalSales.value ?? 0" :trend="stats?.totalSales.trend ?? 0" />
-      <StatsCard icon="List" icon-bg="#67c23a" label="订单数"
+      <StatsCard icon="List" icon-bg="linear-gradient(135deg, #34d399, #059669)" label="订单数"
         :value="stats?.orderCount.value ?? 0" :trend="stats?.orderCount.trend ?? 0" />
-      <StatsCard icon="User" icon-bg="#e6a23c" label="用户数"
+      <StatsCard icon="User" icon-bg="linear-gradient(135deg, #60a5fa, #3b82f6)" label="用户数"
         :value="stats?.userCount.value ?? 0" :trend="stats?.userCount.trend ?? 0" />
-      <StatsCard icon="Goods" icon-bg="#f56c6c" label="商品数"
+      <StatsCard icon="Goods" icon-bg="linear-gradient(135deg, #f87171, #ef4444)" label="商品数"
         :value="stats?.productCount.value ?? 0" :trend="stats?.productCount.trend ?? 0" />
     </div>
 
@@ -78,7 +78,7 @@ onMounted(async () => {
 </script>
 
 <style scoped>
-.dashboard { display: flex; flex-direction: column; gap: 16px; }
+.dashboard { display: flex; flex-direction: column; gap: 20px; }
 .stats-row { display: flex; gap: 16px; }
 .charts-row { display: flex; gap: 16px; }
 .chart-col { flex: 1; min-width: 0; }

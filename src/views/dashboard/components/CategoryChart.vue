@@ -17,19 +17,25 @@ let chart: echarts.ECharts | null = null
 function renderChart() {
   if (!chart || !props.data.length) return
   chart.setOption({
-    tooltip: { trigger: 'axis', axisPointer: { type: 'shadow' } },
+    tooltip: {
+      trigger: 'axis',
+      axisPointer: { type: 'shadow' },
+      backgroundColor: '#1e2035',
+      borderColor: 'rgba(255,255,255,0.1)',
+      textStyle: { color: '#e8e9ed' },
+    },
     grid: { left: 50, right: 20, top: 20, bottom: 30 },
     xAxis: {
       type: 'category',
       data: props.data.map((d) => d.name),
-      axisLine: { lineStyle: { color: '#e4e7ed' } },
+      axisLine: { lineStyle: { color: 'rgba(255,255,255,0.06)' } },
       axisTick: { show: false },
-      axisLabel: { color: '#909399' },
+      axisLabel: { color: '#9a9cb0' },
     },
     yAxis: {
       type: 'value',
-      axisLabel: { color: '#909399' },
-      splitLine: { lineStyle: { color: '#f0f0f0' } },
+      axisLabel: { color: '#9a9cb0' },
+      splitLine: { lineStyle: { color: 'rgba(255,255,255,0.04)' } },
     },
     series: [{
       type: 'bar',
@@ -37,8 +43,8 @@ function renderChart() {
       barMaxWidth: 40,
       itemStyle: {
         color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
-          { offset: 0, color: '#67c23a' },
-          { offset: 1, color: '#b3e19d' },
+          { offset: 0, color: '#f0a030' },
+          { offset: 1, color: 'rgba(240,160,48,0.4)' },
         ]),
         borderRadius: [4, 4, 0, 0],
       },

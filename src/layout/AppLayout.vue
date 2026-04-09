@@ -18,5 +18,6 @@ import AppMain from './AppMain.vue'
 .app-layout {
   height: 100vh;
   overflow: hidden;
+  background: var(--ml-bg-deep);
 }
 </style>

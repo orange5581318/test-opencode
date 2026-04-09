@@ -44,9 +44,9 @@ const formattedValue = computed(() =>
   display: flex; align-items: center; justify-content: center; flex-shrink: 0;
 }
 .card-info { flex: 1; min-width: 0; }
-.card-label { font-size: 13px; color: #909399; margin-bottom: 4px; }
-.card-value { font-size: 24px; font-weight: 700; color: #303133; line-height: 1.2; }
+.card-label { font-size: 13px; color: var(--ml-text-secondary); margin-bottom: 4px; }
+.card-value { font-size: 24px; font-weight: 700; color: var(--ml-text-bright); line-height: 1.2; font-family: var(--ml-font-display); }
 .card-trend { font-size: 12px; margin-top: 4px; display: flex; align-items: center; gap: 2px; }
-.card-trend.up { color: #f56c6c; }
-.card-trend.down { color: #67c23a; }
+.card-trend.up { color: var(--ml-danger); }
+.card-trend.down { color: var(--ml-success); }
 </style>

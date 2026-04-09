@@ -18,7 +18,7 @@
           <el-descriptions-item label="手机号">{{ order.phone }}</el-descriptions-item>
           <el-descriptions-item label="收货地址">{{ order.address }}</el-descriptions-item>
           <el-descriptions-item label="总金额">
-            <span style="color: #f56c6c; font-weight: bold">¥{{ order.totalAmount.toFixed(2) }}</span>
+            <span style="color: var(--ml-danger); font-weight: bold">¥{{ order.totalAmount.toFixed(2) }}</span>
           </el-descriptions-item>
           <el-descriptions-item label="下单时间">{{ order.createTime }}</el-descriptions-item>
           <el-descriptions-item label="付款时间">{{ order.payTime || '-' }}</el-descriptions-item>
@@ -26,7 +26,7 @@
           <el-descriptions-item label="快递单号">{{ order.expressNo || '-' }}</el-descriptions-item>
           <el-descriptions-item label="备注">{{ order.remark || '-' }}</el-descriptions-item>
           <el-descriptions-item v-if="order.refundReason" label="退款原因">
-            <span style="color: #f56c6c">{{ order.refundReason }}</span>
+            <span style="color: var(--ml-danger)">{{ order.refundReason }}</span>
           </el-descriptions-item>
         </el-descriptions>
       </el-card>
@@ -47,7 +47,7 @@
           <el-table-column label="数量" prop="quantity" width="100" align="center" />
           <el-table-column label="小计" width="120" align="right">
             <template #default="{ row }">
-              <span style="color: #f56c6c">¥{{ row.subtotal.toFixed(2) }}</span>
+              <span style="color: var(--ml-danger)">¥{{ row.subtotal.toFixed(2) }}</span>
             </template>
           </el-table-column>
         </el-table>
@@ -59,16 +59,16 @@
         <el-timeline>
           <el-timeline-item timestamp="" placement="top">
             <p>创建订单</p>
-            <p style="color: #909399; font-size: 13px">{{ order.createTime }}</p>
+            <p style="color: var(--ml-text-secondary); font-size: 13px">{{ order.createTime }}</p>
           </el-timeline-item>
           <el-timeline-item v-if="order.payTime" timestamp="" placement="top">
             <p>付款成功</p>
-            <p style="color: #909399; font-size: 13px">{{ order.payTime }}</p>
+            <p style="color: var(--ml-text-secondary); font-size: 13px">{{ order.payTime }}</p>
           </el-timeline-item>
           <el-timeline-item v-if="order.shipTime" timestamp="" placement="top">
             <p>已发货</p>
-            <p style="color: #909399; font-size: 13px">{{ order.shipTime }}</p>
-            <p v-if="order.expressNo" style="color: #909399; font-size: 13px">
+            <p style="color: var(--ml-text-secondary); font-size: 13px">{{ order.shipTime }}</p>
+            <p v-if="order.expressNo" style="color: var(--ml-text-secondary); font-size: 13px">
               快递单号：{{ order.expressNo }}
             </p>
           </el-timeline-item>
@@ -77,7 +77,7 @@
           </el-timeline-item>
           <el-timeline-item v-if="order.status === 4" type="danger" timestamp="" placement="top">
             <p>已退款</p>
-            <p v-if="order.refundReason" style="color: #f56c6c; font-size: 13px">
+            <p v-if="order.refundReason" style="color: var(--ml-danger); font-size: 13px">
               退款原因：{{ order.refundReason }}
             </p>
           </el-timeline-item>
@@ -145,5 +145,7 @@ onMounted(() => {
 .header-bar h2 {
   margin: 0;
   font-size: 18px;
+  color: var(--ml-text-bright);
+  font-family: var(--ml-font-display);
 }
 </style>

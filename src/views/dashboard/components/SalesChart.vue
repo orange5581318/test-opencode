@@ -19,6 +19,9 @@ function renderChart() {
   chart.setOption({
     tooltip: {
       trigger: 'axis',
+      backgroundColor: '#1e2035',
+      borderColor: 'rgba(255,255,255,0.1)',
+      textStyle: { color: '#e8e9ed' },
       formatter: (params: any) => {
         const p = params[0]
         return `${p.name}<br/>销售额：¥${p.value.toLocaleString()}`
@@ -28,17 +31,17 @@ function renderChart() {
     xAxis: {
       type: 'category',
       data: props.data.dates,
-      axisLine: { lineStyle: { color: '#e4e7ed' } },
+      axisLine: { lineStyle: { color: 'rgba(255,255,255,0.06)' } },
       axisTick: { show: false },
-      axisLabel: { color: '#909399' },
+      axisLabel: { color: '#9a9cb0' },
     },
     yAxis: {
       type: 'value',
       axisLabel: {
-        color: '#909399',
+        color: '#9a9cb0',
         formatter: (v: number) => (v >= 10000 ? v / 10000 + '万' : String(v)),
       },
-      splitLine: { lineStyle: { color: '#f0f0f0' } },
+      splitLine: { lineStyle: { color: 'rgba(255,255,255,0.04)' } },
     },
     series: [{
       type: 'line',
@@ -46,12 +49,12 @@ function renderChart() {
       smooth: true,
       symbol: 'circle',
       symbolSize: 6,
-      lineStyle: { color: '#409eff', width: 2 },
-      itemStyle: { color: '#409eff' },
+      lineStyle: { color: '#f0a030', width: 2 },
+      itemStyle: { color: '#f0a030' },
       areaStyle: {
         color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
-          { offset: 0, color: 'rgba(64,158,255,0.3)' },
-          { offset: 1, color: 'rgba(64,158,255,0.02)' },
+          { offset: 0, color: 'rgba(240,160,48,0.25)' },
+          { offset: 1, color: 'rgba(240,160,48,0.02)' },
         ]),
       },
     }],

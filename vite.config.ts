@@ -10,7 +10,7 @@ export default defineConfig({
     vueDevTools(),
     viteMockServe({
       mockPath: 'mock',
-      enable: true, // process.env.NODE_ENV !== 'production',
+      enable: process.env.NODE_ENV !== 'production',
     }),
   ],
   resolve: {
