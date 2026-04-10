@@ -96,6 +96,7 @@ import type { SystemMenu, SystemMenuForm } from '@/api/system'
 const loading = ref(false)
 const menuList = ref<SystemMenu[]>([])
 
+/** 加载菜单列表数据 */
 async function fetchList() {
   loading.value = true
   try {
@@ -105,6 +106,7 @@ async function fetchList() {
   }
 }
 
+/** 删除菜单（含二次确认） */
 async function handleDelete(row: SystemMenu) {
   await ElMessageBox.confirm(`确定删除菜单「${row.name}」吗？`, '提示', {
     confirmButtonText: '确定', cancelButtonText: '取消', type: 'warning',
@@ -129,6 +131,7 @@ const rules: FormRules = {
   path: [{ required: true, message: '请输入路由路径', trigger: 'blur' }],
 }
 
+/** 打开新增/编辑菜单弹窗 */
 function openDialog(row?: SystemMenu) {
   if (row) {
     editingId.value = row.id
@@ -143,12 +146,14 @@ function openDialog(row?: SystemMenu) {
   dialogVisible.value = true
 }
 
+/** 重置表单数据 */
 function resetForm() {
   formRef.value?.clearValidate()
   Object.assign(form, defaultForm())
   editingId.value = null
 }
 
+/** 提交菜单表单（新增或编辑） */
 async function handleSubmit() {
   await formRef.value?.validate()
   submitting.value = true

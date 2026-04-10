@@ -46,6 +46,7 @@ router.beforeEach(async (to) => {
   return true
 })
 
+/** 移除所有动态添加的路由 */
 export function resetDynamicRoutes() {
   addedRouteNames.forEach((name) => router.removeRoute(name))
   addedRouteNames = []

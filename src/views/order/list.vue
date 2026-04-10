@@ -133,6 +133,7 @@ const loading = ref(false)
 const orderList = ref<Order[]>([])
 const pagination = reactive({ page: 1, pageSize: 10, total: 0 })
 
+/** 加载订单列表数据 */
 async function fetchList() {
   loading.value = true
   try {
@@ -151,12 +152,15 @@ async function fetchList() {
   }
 }
 
+/** 搜索订单（重置到第一页） */
 function handleSearch() { pagination.page = 1; fetchList() }
+/** 重置搜索条件 */
 function handleReset() {
   searchForm.orderNo = ''; searchForm.status = ''; searchForm.dateRange = null
   pagination.page = 1; fetchList()
 }
 
+/** 跳转到订单详情页 */
 function handleDetail(row: Order) {
   router.push({ path: '/order/detail', query: { id: row.id } })
 }
@@ -166,6 +170,7 @@ const shipDialogVisible = ref(false)
 const shipSubmitting = ref(false)
 const shipForm = reactive({ id: 0, orderNo: '', expressNo: '' })
 
+/** 打开发货弹窗 */
 function openShipDialog(row: Order) {
   shipForm.id = row.id
   shipForm.orderNo = row.orderNo
@@ -173,6 +178,7 @@ function openShipDialog(row: Order) {
   shipDialogVisible.value = true
 }
 
+/** 提交发货信息 */
 async function handleShip() {
   if (!shipForm.expressNo.trim()) {
     ElMessage.warning('请输入快递单号')
@@ -194,6 +200,7 @@ const refundDialogVisible = ref(false)
 const refundSubmitting = ref(false)
 const refundForm = reactive({ id: 0, orderNo: '', reason: '' })
 
+/** 打开退款弹窗 */
 function openRefundDialog(row: Order) {
   refundForm.id = row.id
   refundForm.orderNo = row.orderNo
@@ -201,6 +208,7 @@ function openRefundDialog(row: Order) {
   refundDialogVisible.value = true
 }
 
+/** 提交退款申请（含二次确认） */
 async function handleRefund() {
   if (!refundForm.reason.trim()) {
     ElMessage.warning('请输入退款原因')

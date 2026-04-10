@@ -34,6 +34,7 @@ const imagePool = [
 
 let productIdCounter = 100
 
+/** 批量生成模拟商品数据 */
 function generateProducts() {
   const list: any[] = []
   categories.forEach((cat) => {
@@ -60,11 +61,13 @@ function generateProducts() {
 const allProducts = generateProducts()
 
 export default [
+  // 获取商品分类列表
   {
     url: '/api/product/categories',
     method: 'get',
     response: () => ({ code: 200, data: categories, message: 'ok' }),
   },
+  // 商品列表（分页、筛选）
   {
     url: '/api/product/list',
     method: 'get',
@@ -87,6 +90,7 @@ export default [
       return { code: 200, data: { list, total }, message: 'ok' }
     },
   },
+  // 新增商品
   {
     url: '/api/product/add',
     method: 'post',
@@ -102,6 +106,7 @@ export default [
       return { code: 200, data: newProduct, message: '新增成功' }
     },
   },
+  // 更新商品信息
   {
     url: '/api/product/update',
     method: 'put',
@@ -114,6 +119,7 @@ export default [
       return { code: 200, data: null, message: '更新成功' }
     },
   },
+  // 删除商品
   {
     url: '/api/product/delete',
     method: 'delete',
@@ -124,6 +130,7 @@ export default [
       return { code: 200, data: null, message: '删除成功' }
     },
   },
+  // 切换商品上下架状态
   {
     url: '/api/product/toggleStatus',
     method: 'put',
@@ -133,6 +140,7 @@ export default [
       return { code: 200, data: null, message: '状态更新成功' }
     },
   },
+  // 新增商品分类
   {
     url: '/api/product/category/add',
     method: 'post',
@@ -148,6 +156,7 @@ export default [
       return { code: 200, data: newCat, message: '新增成功' }
     },
   },
+  // 更新商品分类
   {
     url: '/api/product/category/update',
     method: 'put',
@@ -157,6 +166,7 @@ export default [
       return { code: 200, data: null, message: '更新成功' }
     },
   },
+  // 删除商品分类
   {
     url: '/api/product/category/delete',
     method: 'delete',

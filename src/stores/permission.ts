@@ -6,6 +6,7 @@ import type { RouteRecordRaw } from 'vue-router'
 
 const viewModules = import.meta.glob('../views/**/*.vue')
 
+/** 根据路径字符串动态解析 Vue 组件 */
 function resolveComponent(component: string) {
   const key = `../views/${component}.vue`
   const mod = viewModules[key]
@@ -20,6 +21,7 @@ export const usePermissionStore = defineStore('permission', () => {
   const menus = ref<MenuItem[]>([])
   const dynamicRoutes = ref<RouteRecordRaw[]>([])
 
+  /** 根据菜单数据生成动态路由并注册 */
   async function generateRoutes(): Promise<RouteRecordRaw[]> {
     const menuList = await getMenus()
     menus.value = menuList
@@ -35,6 +37,7 @@ export const usePermissionStore = defineStore('permission', () => {
     return routes
   }
 
+  /** 重置动态路由，清空菜单数据 */
   function resetRoutes() {
     menus.value = []
     dynamicRoutes.value = []

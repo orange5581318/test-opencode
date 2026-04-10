@@ -27,14 +27,17 @@ export interface MenuItem {
   hidden?: boolean
 }
 
+/** 用户登录 */
 export function login(data: LoginParams): Promise<LoginResult> {
   return request.post('/user/login', data)
 }
 
+/** 获取当前用户信息 */
 export function getUserInfo(): Promise<UserInfo> {
   return request.get('/user/info')
 }
 
+/** 获取用户菜单权限列表 */
 export function getMenus(): Promise<MenuItem[]> {
   return request.get('/user/menus')
 }

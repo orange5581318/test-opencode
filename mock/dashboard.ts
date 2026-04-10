@@ -1,6 +1,7 @@
 import type { MockMethod } from 'vite-plugin-mock'
 
 export default [
+  // 获取仪表盘统计数据（销售额、订单数、用户数、商品数）
   {
     url: '/api/dashboard/stats',
     method: 'get',
@@ -15,6 +16,7 @@ export default [
       message: 'ok',
     }),
   },
+  // 获取销售趋势数据（近7天）
   {
     url: '/api/dashboard/salesTrend',
     method: 'get',
@@ -27,6 +29,7 @@ export default [
       message: 'ok',
     }),
   },
+  // 获取商品分类销量统计
   {
     url: '/api/dashboard/categoryStats',
     method: 'get',
@@ -43,6 +46,7 @@ export default [
       message: 'ok',
     }),
   },
+  // 获取最近订单列表
   {
     url: '/api/dashboard/recentOrders',
     method: 'get',

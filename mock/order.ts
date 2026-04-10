@@ -1,12 +1,14 @@
 import type { MockMethod } from 'vite-plugin-mock'
 import Mock from 'mockjs'
 
+/** 生成随机订单号 */
 function generateOrderNo() {
   const date = Mock.mock('@date("yyyyMMdd")')
   const rand = Mock.mock('@string("number", 6)')
   return `ORD${date}${rand}`
 }
 
+/** 生成订单商品明细 */
 function generateItems() {
   const count = Mock.mock('@integer(1, 3)')
   const items: any[] = []
@@ -25,6 +27,7 @@ function generateItems() {
   return items
 }
 
+/** 批量生成模拟订单数据 */
 function generateOrders() {
   const list: any[] = []
   for (let i = 1; i <= 50; i++) {
@@ -75,6 +78,7 @@ function generateOrders() {
 const allOrders = generateOrders()
 
 export default [
+  // 订单列表（分页、筛选）
   {
     url: '/api/order/list',
     method: 'get',
@@ -99,6 +103,7 @@ export default [
       return { code: 200, data: { list, total }, message: 'ok' }
     },
   },
+  // 订单详情
   {
     url: '/api/order/detail',
     method: 'get',
@@ -108,6 +113,7 @@ export default [
       return { code: 200, data: order || null, message: order ? 'ok' : '订单不存在' }
     },
   },
+  // 订单发货
   {
     url: '/api/order/ship',
     method: 'post',
@@ -121,6 +127,7 @@ export default [
       return { code: 200, data: null, message: '发货成功' }
     },
   },
+  // 订单退款
   {
     url: '/api/order/refund',
     method: 'post',

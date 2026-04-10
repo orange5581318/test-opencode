@@ -27,6 +27,7 @@ const allRoles: any[] = [
 let roleIdCounter = 5
 
 // ==================== Users ====================
+/** 根据角色ID数组获取角色名称 */
 function getRoleName(roleIds: number[]) {
   return roleIds
     .map((rid) => allRoles.find((r) => r.id === rid)?.name || '')
@@ -34,6 +35,7 @@ function getRoleName(roleIds: number[]) {
     .join(',')
 }
 
+/** 随机生成角色ID组合 */
 function randomRoleIds(): number[] {
   const count = Mock.mock('@integer(1, 2)')
   const ids = new Set<number>()
@@ -43,6 +45,7 @@ function randomRoleIds(): number[] {
   return Array.from(ids)
 }
 
+/** 批量生成模拟用户数据 */
 function generateUsers() {
   const list: any[] = []
   for (let i = 1; i <= 30; i++) {
@@ -69,6 +72,7 @@ let userIdCounter = 30
 // ==================== Endpoints ====================
 export default [
   // ---------- User Management ----------
+  // 用户列表（分页、筛选）
   {
     url: '/api/system/user/list',
     method: 'get',
@@ -89,6 +93,7 @@ export default [
       return { code: 200, data: { list, total }, message: 'ok' }
     },
   },
+  // 新增用户
   {
     url: '/api/system/user/add',
     method: 'post',
@@ -110,6 +115,7 @@ export default [
       return { code: 200, data: newUser, message: '新增成功' }
     },
   },
+  // 更新用户信息
   {
     url: '/api/system/user/update',
     method: 'post',
@@ -122,6 +128,7 @@ export default [
       return { code: 200, data: null, message: '更新成功' }
     },
   },
+  // 删除用户
   {
     url: '/api/system/user/delete',
     method: 'post',
@@ -131,6 +138,7 @@ export default [
       return { code: 200, data: null, message: '删除成功' }
     },
   },
+  // 切换用户启用/禁用状态
   {
     url: '/api/system/user/toggleStatus',
     method: 'post',
@@ -141,6 +149,7 @@ export default [
     },
   },
   // ---------- Role Management ----------
+  // 角色列表（分页、筛选）
   {
     url: '/api/system/role/list',
     method: 'get',
@@ -161,6 +170,7 @@ export default [
       return { code: 200, data: { list, total }, message: 'ok' }
     },
   },
+  // 获取全部角色（不分页）
   {
     url: '/api/system/role/all',
     method: 'get',
@@ -168,6 +178,7 @@ export default [
       return { code: 200, data: allRoles, message: 'ok' }
     },
   },
+  // 新增角色
   {
     url: '/api/system/role/add',
     method: 'post',
@@ -185,6 +196,7 @@ export default [
       return { code: 200, data: newRole, message: '新增成功' }
     },
   },
+  // 更新角色信息
   {
     url: '/api/system/role/update',
     method: 'post',
@@ -196,6 +208,7 @@ export default [
       return { code: 200, data: null, message: '更新成功' }
     },
   },
+  // 删除角色
   {
     url: '/api/system/role/delete',
     method: 'post',
@@ -206,6 +219,7 @@ export default [
     },
   },
   // ---------- Menu Management ----------
+  // 获取菜单列表
   {
     url: '/api/system/menu/list',
     method: 'get',
@@ -213,6 +227,7 @@ export default [
       return { code: 200, data: allMenus, message: 'ok' }
     },
   },
+  // 新增菜单
   {
     url: '/api/system/menu/add',
     method: 'post',
@@ -232,6 +247,7 @@ export default [
       return { code: 200, data: newMenu, message: '新增成功' }
     },
   },
+  // 更新菜单信息
   {
     url: '/api/system/menu/update',
     method: 'post',
@@ -243,6 +259,7 @@ export default [
       return { code: 200, data: null, message: '更新成功' }
     },
   },
+  // 删除菜单
   {
     url: '/api/system/menu/delete',
     method: 'post',

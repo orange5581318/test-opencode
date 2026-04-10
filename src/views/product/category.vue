@@ -53,12 +53,14 @@ import type { Category, CategoryForm } from '@/api/product'
 const loading = ref(false)
 const categoryList = ref<Category[]>([])
 
+/** 加载分类列表数据 */
 async function fetchList() {
   loading.value = true
   try { categoryList.value = await getCategories() }
   finally { loading.value = false }
 }
 
+/** 删除分类（含二次确认） */
 async function handleDelete(row: Category) {
   await ElMessageBox.confirm(`确定删除分类「${row.name}」吗？`, '提示', {
     confirmButtonText: '确定', cancelButtonText: '取消', type: 'warning',
@@ -81,6 +83,7 @@ const rules: FormRules = {
   sort: [{ required: true, message: '请输入排序值', trigger: 'blur' }],
 }
 
+/** 打开新增/编辑分类弹窗 */
 function openDialog(row?: Category) {
   if (row) {
     editingId.value = row.id
@@ -92,8 +95,10 @@ function openDialog(row?: Category) {
   dialogVisible.value = true
 }
 
+/** 重置表单数据 */
 function resetForm() { formRef.value?.clearValidate(); Object.assign(form, defaultForm()); editingId.value = null }
 
+/** 提交分类表单（新增或编辑） */
 async function handleSubmit() {
   await formRef.value?.validate()
   submitting.value = true

@@ -122,6 +122,7 @@ const loading = ref(false)
 const roleList = ref<Role[]>([])
 const pagination = reactive({ page: 1, pageSize: 10, total: 0 })
 
+/** 加载角色列表数据 */
 async function fetchList() {
   loading.value = true
   try {
@@ -136,7 +137,9 @@ async function fetchList() {
   }
 }
 
+/** 搜索角色（重置到第一页） */
 function handleSearch() { pagination.page = 1; fetchList() }
+/** 重置搜索条件 */
 function handleReset() {
   searchForm.keyword = ''; searchForm.status = ''
   pagination.page = 1; fetchList()
@@ -145,6 +148,7 @@ function handleReset() {
 // Menu tree data
 const menuList = ref<SystemMenu[]>([])
 
+/** 加载菜单树数据（用于权限分配） */
 async function fetchMenuList() {
   menuList.value = await getSystemMenuList()
 }
@@ -169,6 +173,7 @@ const formRules: FormRules = {
   code: [{ required: true, message: '请输入角色编码', trigger: 'blur' }],
 }
 
+/** 打开新增/编辑角色弹窗 */
 function openDialog(row?: Role) {
   editingRole.value = row || null
   roleForm.name = row?.name || ''
@@ -183,6 +188,7 @@ function openDialog(row?: Role) {
   })
 }
 
+/** 提交角色表单（新增或编辑） */
 async function handleSubmit() {
   await formRef.value?.validate()
   roleForm.permissionIds = treeRef.value?.getCheckedKeys(false) as number[]
@@ -202,6 +208,7 @@ async function handleSubmit() {
   }
 }
 
+/** 删除角色（含二次确认） */
 async function handleDelete(row: Role) {
   await ElMessageBox.confirm('确定要删除该角色吗？', '提示', {
     confirmButtonText: '确定', cancelButtonText: '取消', type: 'warning',

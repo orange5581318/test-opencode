@@ -2,6 +2,7 @@ import type { MockMethod } from 'vite-plugin-mock'
 import Mock from 'mockjs'
 
 export default [
+  // 用户登录
   {
     url: '/api/user/login',
     method: 'post',
@@ -20,6 +21,7 @@ export default [
       return { code: 401, data: null, message: '用户名或密码错误' }
     },
   },
+  // 获取用户菜单权限
   {
     url: '/api/user/menus',
     method: 'get',
@@ -38,6 +40,7 @@ export default [
       message: 'ok',
     }),
   },
+  // 获取当前用户信息
   {
     url: '/api/user/info',
     method: 'get',

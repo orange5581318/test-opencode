@@ -1,3 +1,7 @@
+/**
+ * Axios 请求封装模块
+ * 统一处理请求拦截（Token 注入）和响应拦截（错误提示、401 跳转登录）
+ */
 import axios from 'axios'
 import { ElMessage } from 'element-plus'
 import { getToken, removeToken } from '@/utils/auth'
@@ -7,6 +11,7 @@ const request = axios.create({
   timeout: 10000,
 })
 
+/** 请求拦截器：自动在请求头中注入 Token */
 request.interceptors.request.use((config) => {
   const token = getToken()
   if (token) {
@@ -15,6 +20,7 @@ request.interceptors.request.use((config) => {
   return config
 })
 
+/** 响应拦截器：统一处理响应数据、错误提示及 401 自动跳转登录 */
 request.interceptors.response.use(
   (response) => {
     const { code, data, message } = response.data

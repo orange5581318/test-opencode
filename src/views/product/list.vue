@@ -150,6 +150,7 @@ const loading = ref(false)
 const productList = ref<Product[]>([])
 const pagination = reactive({ page: 1, pageSize: 10, total: 0 })
 
+/** 加载商品列表数据 */
 async function fetchList() {
   loading.value = true
   try {
@@ -165,12 +166,15 @@ async function fetchList() {
   }
 }
 
+/** 搜索商品（重置到第一页） */
 function handleSearch() { pagination.page = 1; fetchList() }
+/** 重置搜索条件 */
 function handleReset() {
   searchForm.keyword = ''; searchForm.categoryId = ''; searchForm.status = ''
   pagination.page = 1; fetchList()
 }
 
+/** 切换商品上下架状态 */
 async function handleToggleStatus(row: Product) {
   const newStatus = row.status === 1 ? 0 : 1
   await toggleProductStatus(row.id, newStatus as 0 | 1)
@@ -178,6 +182,7 @@ async function handleToggleStatus(row: Product) {
   fetchList()
 }
 
+/** 删除商品（含二次确认） */
 async function handleDelete(row: Product) {
   await ElMessageBox.confirm(`确定删除商品「${row.name}」吗？`, '提示', {
     confirmButtonText: '确定', cancelButtonText: '取消', type: 'warning',
@@ -204,6 +209,7 @@ const rules: FormRules = {
   stock: [{ required: true, message: '请输入库存', trigger: 'blur' }],
 }
 
+/** 打开新增/编辑商品弹窗 */
 function openDialog(row?: Product) {
   if (row) {
     editingId.value = row.id
@@ -215,8 +221,10 @@ function openDialog(row?: Product) {
   dialogVisible.value = true
 }
 
+/** 重置表单数据 */
 function resetForm() { formRef.value?.clearValidate(); Object.assign(form, defaultForm()); editingId.value = null }
 
+/** 提交商品表单（新增或编辑） */
 async function handleSubmit() {
   await formRef.value?.validate()
   submitting.value = true
