@@ -1,0 +1,1 @@
+import{t as e}from"./permission-CCZPxkfw.js";export{e as usePermissionStore};
