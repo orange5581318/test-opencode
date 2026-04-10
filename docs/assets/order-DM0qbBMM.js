@@ -1,0 +1,1 @@
+import{t as e}from"./request-DOi9FA2s.js";function t(t){return e.get(`/order/list`,{params:t})}function n(t){return e.get(`/order/detail`,{params:{id:t}})}function r(t,n){return e.post(`/order/ship`,{id:t,expressNo:n})}function i(t,n){return e.post(`/order/refund`,{id:t,reason:n})}export{r as i,t as n,i as r,n as t};
