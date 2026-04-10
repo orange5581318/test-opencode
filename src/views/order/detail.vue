@@ -14,7 +14,7 @@
           <el-descriptions-item label="状态">
             <el-tag :type="statusTagTypes[order.status]">{{ statusLabels[order.status] }}</el-tag>
           </el-descriptions-item>
-          <el-descriptions-item label="用户名">{{ order.username }}</el-descriptions-item>
+          <el-descriptions-item label="用户名">{{ order.userName }}</el-descriptions-item>
           <el-descriptions-item label="手机号">{{ order.phone }}</el-descriptions-item>
           <el-descriptions-item label="收货地址">{{ order.address }}</el-descriptions-item>
           <el-descriptions-item label="总金额">

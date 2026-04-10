@@ -21,8 +21,8 @@
         label-position="top"
         @keyup.enter="handleLogin"
       >
-        <el-form-item label="用户名" prop="username">
-          <el-input v-model="form.username" placeholder="admin" :prefix-icon="User" />
+        <el-form-item label="用户名" prop="userName">
+          <el-input v-model="form.userName" placeholder="admin" :prefix-icon="User" />
         </el-form-item>
         <el-form-item label="密码" prop="password">
           <el-input v-model="form.password" type="password" placeholder="123456" show-password :prefix-icon="Lock" />
@@ -55,10 +55,10 @@ const userStore = useUserStore()
 const formRef = ref<FormInstance>()
 const loading = ref(false)
 
-const form = reactive({ username: '', password: '' })
+const form = reactive({ userName: '', password: '' })
 
 const rules: FormRules = {
-  username: [{ required: true, message: '请输入用户名', trigger: 'blur' }],
+  userName: [{ required: true, message: '请输入用户名', trigger: 'blur' }],
   password: [{ required: true, message: '请输入密码', trigger: 'blur' }],
 }
 

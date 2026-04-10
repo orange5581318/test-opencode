@@ -41,7 +41,7 @@
     <el-card shadow="never" class="table-card">
       <el-table v-loading="loading" :data="orderList" stripe style="width: 100%">
         <el-table-column prop="orderNo" label="订单号" min-width="180" show-overflow-tooltip />
-        <el-table-column prop="username" label="用户" width="120" />
+        <el-table-column prop="userName" label="用户" width="120" />
         <el-table-column prop="itemCount" label="商品数" width="80" align="center" />
         <el-table-column label="总金额" width="110" align="right">
           <template #default="{ row }">¥{{ row.totalAmount.toFixed(2) }}</template>

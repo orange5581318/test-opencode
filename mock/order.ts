@@ -40,7 +40,7 @@ function generateOrders() {
     const order: any = {
       id: i,
       orderNo: generateOrderNo(),
-      username: Mock.mock('@cname'),
+      userName: Mock.mock('@cname'),
       phone: Mock.mock(/^1[3-9]\d{9}$/),
       address: Mock.mock('@county(true)') + Mock.mock('@ctitle(3, 5)') + '路' + Mock.mock('@integer(1, 200)') + '号',
       status,

@@ -3,7 +3,7 @@ import request from './request'
 // ==================== User ====================
 export interface SystemUser {
   id: number
-  username: string
+  userName: string
   nickname: string
   email: string
   phone: string
@@ -15,7 +15,7 @@ export interface SystemUser {
 }
 
 export interface SystemUserForm {
-  username: string
+  userName: string
   nickname: string
   email: string
   phone: string

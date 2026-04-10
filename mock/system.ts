@@ -52,7 +52,7 @@ function generateUsers() {
     const roleIds = randomRoleIds()
     list.push({
       id: i,
-      username: Mock.mock('@word(4, 8)'),
+      userName: Mock.mock('@word(4, 8)'),
       nickname: Mock.mock('@cname'),
       email: Mock.mock('@email'),
       phone: Mock.mock(/^1[3-9]\d{9}$/),
@@ -83,7 +83,7 @@ export default [
       const status = query.status !== undefined && query.status !== '' ? parseInt(query.status) : undefined
 
       let filtered = allUsers.filter((u) => {
-        if (keyword && !u.username.toLowerCase().includes(keyword) && !u.nickname.toLowerCase().includes(keyword)) return false
+        if (keyword && !u.userName.toLowerCase().includes(keyword) && !u.nickname.toLowerCase().includes(keyword)) return false
         if (status !== undefined && u.status !== status) return false
         return true
       })
@@ -101,7 +101,7 @@ export default [
       const roleIds: number[] = body.roleIds || []
       const newUser = {
         id: ++userIdCounter,
-        username: body.username,
+        userName: body.userName,
         nickname: body.nickname,
         email: body.email,
         phone: body.phone,

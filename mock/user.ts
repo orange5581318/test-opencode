@@ -6,13 +6,13 @@ export default [
   {
     url: '/api/user/login',
     method: 'post',
-    response: ({ body }: { body: { username: string; password: string } }) => {
-      if (body.username === 'admin' && body.password === '123456') {
+    response: ({ body }: { body: { userName: string; password: string } }) => {
+      if (body.userName === 'admin' && body.password === '123456') {
         return {
           code: 200,
           data: {
             token: Mock.mock('@guid'),
-            username: 'admin',
+            userName: 'admin',
             avatar: 'https://avatars.githubusercontent.com/u/1?v=4',
           },
           message: 'ok',
@@ -47,7 +47,7 @@ export default [
     response: () => ({
       code: 200,
       data: {
-        username: 'admin',
+        userName: 'admin',
         avatar: 'https://avatars.githubusercontent.com/u/1?v=4',
         roles: ['admin'],
         permissions: ['product:add', 'product:edit', 'product:delete', 'order:ship', 'order:refund'],

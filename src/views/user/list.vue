@@ -39,7 +39,7 @@
             />
           </template>
         </el-table-column>
-        <el-table-column prop="username" label="用户名" min-width="120" show-overflow-tooltip />
+        <el-table-column prop="userName" label="用户名" min-width="120" show-overflow-tooltip />
         <el-table-column prop="nickname" label="昵称" min-width="120" show-overflow-tooltip />
         <el-table-column prop="email" label="邮箱" min-width="180" show-overflow-tooltip />
         <el-table-column prop="phone" label="手机号" width="130" />
@@ -90,8 +90,8 @@
       @closed="resetForm"
     >
       <el-form ref="formRef" :model="form" :rules="rules" label-width="80px" style="padding-right: 20px">
-        <el-form-item label="用户名" prop="username">
-          <el-input v-model="form.username" placeholder="请输入用户名" />
+        <el-form-item label="用户名" prop="userName">
+          <el-input v-model="form.userName" placeholder="请输入用户名" />
         </el-form-item>
         <el-form-item label="昵称" prop="nickname">
           <el-input v-model="form.nickname" placeholder="请输入昵称" />
@@ -182,7 +182,7 @@ const submitting = ref(false)
 const editingUser = ref<SystemUser | null>(null)
 const formRef = ref<FormInstance>()
 const form = reactive<SystemUserForm>({
-  username: '',
+  userName: '',
   nickname: '',
   email: '',
   phone: '',
@@ -191,7 +191,7 @@ const form = reactive<SystemUserForm>({
 })
 
 const rules: FormRules = {
-  username: [{ required: true, message: '请输入用户名', trigger: 'blur' }],
+  userName: [{ required: true, message: '请输入用户名', trigger: 'blur' }],
   nickname: [{ required: true, message: '请输入昵称', trigger: 'blur' }],
 }
 
@@ -199,14 +199,14 @@ const rules: FormRules = {
 function openDialog(row?: SystemUser) {
   editingUser.value = row || null
   if (row) {
-    form.username = row.username
+    form.userName = row.userName
     form.nickname = row.nickname
     form.email = row.email
     form.phone = row.phone
     form.status = row.status
     form.roleIds = [...row.roleIds]
   } else {
-    form.username = ''
+    form.userName = ''
     form.nickname = ''
     form.email = ''
     form.phone = ''

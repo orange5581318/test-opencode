@@ -1,18 +1,18 @@
 import request from './request'
 
 export interface LoginParams {
-  username: string
+  userName: string
   password: string
 }
 
 export interface LoginResult {
   token: string
-  username: string
+  userName: string
   avatar: string
 }
 
 export interface UserInfo {
-  username: string
+  userName: string
   avatar: string
   roles: string[]
   permissions: string[]

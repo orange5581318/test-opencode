@@ -28,7 +28,7 @@
         <span class="user-info">
           <el-avatar :size="32" :src="userStore.userInfo?.avatar" class="user-avatar" />
           <div class="user-meta">
-            <span class="username">{{ userStore.userInfo?.username }}</span>
+            <span class="userName">{{ userStore.userInfo?.userName }}</span>
             <span class="user-role">管理员</span>
           </div>
           <el-icon class="dropdown-arrow"><ArrowDown /></el-icon>
@@ -178,7 +178,7 @@ function handleCommand(command: string) {
   flex-direction: column;
   line-height: 1.2;
 }
-.username {
+.userName {
   font-size: 13px;
   font-weight: 600;
   color: var(--ml-text-primary);
